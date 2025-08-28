@@ -12,8 +12,18 @@ jobs:
       # экшен — выполняет какую-то задачу
       # checkout — клонирует репозиторий
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       # run – произвольная bash-команда
       # ls -la выведет содержимое текущего репозитория
       - run: make setup
       - run: make test
       - run: make lint
+  hexlet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Print Hello from Hexlet
+        uses: hexlet-components/hello-from-hexlet-action@release
